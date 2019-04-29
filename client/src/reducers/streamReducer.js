@@ -1,4 +1,4 @@
-import { _ } from "lodash";
+import _ from "lodash";
 import {
   CREATE_STREAM,
   FETCH_STREAMS,
@@ -12,7 +12,8 @@ export default (state = {}, action) => {
     case CREATE_STREAM:
       return { ...state, [action.payload.id]: action.payload };
     case FETCH_STREAMS:
-      return { ...state, ..._.mapKey(action.payload, "id") };
+      console.log(action.payload);
+      return { ...state, ..._.mapKeys(action.payload, "id") };
     case FETCH_STREAM:
       return { ...state, [action.payload.id]: action.payload };
     case EDIT_STREAM:
